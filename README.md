@@ -34,11 +34,18 @@ right endpoint
 * `brdy2`: one small cell on the left and right boundary, otherwise uniform.
 
 -MERGETYPE
+
 * `LRNP`: merge to the left, right, non-periodically.
 * `LRP`:  merge to the left, right, periodically.
 * `LP`: merge only to the left, periodically.
 * `RP`: merge only to the right, periodically.
-All of the above options use a specified tolerance (TOL) in the code.
+
+All of the above options create neighbourhoods using a specified tolerance (TOL) in the code, whereby cells are merged to the left or to the right until the neighborhood satisfies a size constraint:
+<p align="center">
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype" width="300" >
+</p>
+<p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell.</i> <p align="center">
+
 
 After the grid generator finishes, it output three files.  
 - The file with extension `.dat`, contains the `N+1` grid endpoints.  
