@@ -6,7 +6,7 @@ This is a Python code that solves 1D hyperbolic conservation laws on nonuniform 
 </p>
 <p align="center"> <i>High order approximation (p = 5) of an advecting pulse on a highly nonunform grid.  The DG solution on each element is plotted with a different colour.</i> <p align="center">
 
-## 🏗&nbsp; Grid generation and preprocessing 💻
+## 🏗&nbsp; Grid generation and preprocessing 🚧
 Nonuniform grids on which state redistribution can be applied are generated using `gengrid.py`.  For example, the call
 
 ```
