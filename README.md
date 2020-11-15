@@ -42,9 +42,9 @@ right endpoint
 
 All of the above options create neighbourhoods using a specified tolerance (TOL) in the code, whereby cells are merged to the left or to the right until the neighborhood satisfies a size constraint:
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype" width="300" >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype"  >
 </p>
-<p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell.</i> <p align="center">
+<p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h.</i> <p align="center">
 
 
 After the grid generator finishes, it output three files.  
