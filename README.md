@@ -65,7 +65,9 @@ grid filename (without any file extensions!)
 -PLOT
 plot the numerical solution at the final time using matplotlib
 
-
+## ☎️ &nbsp; Contact
+For help running the code, or any other questions, feel free to send me an email at
+`giuliani AT cims DOT nyu DOT edu`
 
 ## 📓&nbsp; License
 
