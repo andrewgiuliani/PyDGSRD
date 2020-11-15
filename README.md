@@ -61,6 +61,9 @@ final time
 -G
 grid filename (without any file extensions!)
 
+-PLOT
+plot the numerical solution at the final time using matplotlib
+
 
 
 ## 📓&nbsp; License
