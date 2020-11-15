@@ -11,24 +11,26 @@ from srd import srd_basis_functions, srd
 
 import ipdb
 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-P", "--POLYNOMIAL", type=int, help="polynomial degree of approximation")
+parser.add_argument("-T", "--FINALTIME", type=float, help="final time")
+parser.add_argument("-G", "--GRIDDNAME", type=str, help="grid name (without file extensions)")
+parser.add_argument("-PLOT", "--PLOT", action="store_true", default=False)
+args = parser.parse_args()
 
 
 
 
+p = args.POLYNOMIAL
+T = args.FINALTIME
+grid = args.GRIDDNAME
+plotfinal = args.PLOT
 
-p = int(sys.argv[1])  # polynomial degree of approximation on each element
-T = float(sys.argv[2]) # final time
-
-
-
-
-
-
-
-
-grid_name =           sys.argv[3] + ".dat"
-preprocessing_name =  sys.argv[3] + ".pdat"
-merging_meta_data  =  sys.argv[3] + ".mdat"
+grid_name =           grid + ".dat"
+preprocessing_name =  grid + ".pdat"
+merging_meta_data  =  grid + ".mdat"
 #ipdb.set_trace(context=21)
 
 grid_x = np.loadtxt(grid_name) # load the element grid coordinates
@@ -48,10 +50,14 @@ N = h.size          # number of elements in the grid
 
 
 ## load merge data ##
-indata = np.loadtxt(merging_meta_data)
-dx = indata[0]
-merge_type = indata[1]
-TOL = indata[2]
+with open(merging_meta_data, 'r') as file:
+    indata = file.read().replace('\n', ' ').split()
+#ipdb.set_trace(context=21)
+dx = float(indata[0])
+merge_type = str(indata[1])
+TOL = float(indata[2])
+grid_type = str(indata[3])
+
 
 ### load neighborhood data for SRD ###
 preprocessing_data = np.loadtxt(preprocessing_name).astype(int)
@@ -136,13 +142,13 @@ m1 = mass(c0,h)
 
 print("\n###### MERGING META DATA ######\n")
 print("min volume fraction %.16e" % np.min(h/dx) )
-if merge_type == 0:
+if merge_type == "LRNP":
     print("merging type = left and right merging (not periodic)")
-elif merge_type == 1:
+elif merge_type == "LRP":
     print("merging type = left and right merging (periodic)")
-elif merge_type == 2:
+elif merge_type == "LP":
     print("merging type = left merging (periodic)")
-elif merge_type == 3:
+elif merge_type == "RP":
     print("merging type = right merging (periodic)")
 else:
     print("merging type not recognized...\n")
@@ -192,5 +198,6 @@ m1 = mass(c0,h)
 
 print("###### FINAL MASS DIFFERENCE %.16e ######"%np.fabs(m0-m1))
 
-#plot(c0, grid_x, p)
+if plotfinal:
+    plot(c0, grid_x, p)
 
