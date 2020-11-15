@@ -4,12 +4,12 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-N", "--NUMELEM", type=int, help="number of elements")
-parser.add_argument("-L", "--LEFT", type=float, help="left endpoint")
-parser.add_argument("-R", "--RIGHT", type=float, help="right endpoint")
-parser.add_argument("-MESHTYPE", "--MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2"], help="mesh type")
+parser.add_argument("-N", "--NUMELEM", type=int, help="number of elements", default = 0)
+parser.add_argument("-L", "--LEFT", type=float, help="left endpoint", default = 0)
+parser.add_argument("-R", "--RIGHT", type=float, help="right endpoint", default = 0)
+parser.add_argument("-MESHTYPE", "--MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2"], default="load", help="mesh type")
 parser.add_argument("-MERGETYPE", "--MERGETYPE", type=str, choices = ["LRP", "LRNP", "LP", "RP"], help="LRP = merge to left and right. LRNP = left, right, nonperiodic LP = left periodic. RP = right periodic")
-
+parser.add_argument("-LOAD", "--LOAD", type = str, help="load a grid", default = "null")
 args = parser.parse_args()
 #ipdb.set_trace(context=21)
 
@@ -18,6 +18,7 @@ left = args.LEFT
 right = args.RIGHT
 mesh_type = args.MESHTYPE
 merge_type = args.MERGETYPE
+loadgridname = args.LOAD
 
 if mesh_type == "uniform":
     x = dx * np.linspace(left, right, N)
@@ -63,7 +64,17 @@ elif mesh_type == "bdry2":
     reg = np.arange(num_elem-1) * dx + alpha*dx
     x = np.hstack( (np.array([left]), reg+left, np.array([right]) ) ) 
 #    ipdb.set_trace(context=21)
-
+elif mesh_type == "load":
+    
+    x = np.loadtxt(loadgridname + ".dat")
+    with open(loadgridname + ".mdat", 'r') as file:
+        indata = file.read().replace('\n', ' ').split()
+    #ipdb.set_trace(context=21)
+    dx = float(indata[0])
+    merge_type = str(indata[1])
+    #TOL = float(indata[2])
+    grid_type = str(indata[3])
+    num_elem = x.size-1
 
 
 
@@ -117,7 +128,7 @@ for elem in range(num_elem):
 
     if merge_type == "LRNP": # merge to left and right (nonperiodic)
         curr = elem-1
-        while left_length < TOL and curr > 0:
+        while left_length < TOL and curr > -1:
             left_length = left_length + h[curr]
             m[elem] = curr
             overlaps[curr] = overlaps[curr] + 1
@@ -129,6 +140,27 @@ for elem in range(num_elem):
             M[elem] = curr
             overlaps[curr] = overlaps[curr] + 1
             curr = curr + 1
+
+        # merge the left neighborhoods until a tolerance of TOL*2 now
+        if left_length < TOL:
+            curr = int(M[elem]+1)
+            while right_length < 2*TOL and curr < num_elem:
+                right_length = right_length + h[curr]
+                M[elem] = curr
+                overlaps[curr] = overlaps[curr] + 1
+                curr = curr + 1
+        
+        # merge the right neighborhoods until a tolerance of TOL*2 now
+        if right_length < TOL:
+            curr = int(m[elem]-1)
+            while left_length < 2*TOL and curr > -1:
+                left_length = left_length + h[curr]
+                m[elem] = curr
+                overlaps[curr] = overlaps[curr] + 1
+                curr = curr - 1
+
+#        print(left_length/TOL, right_length/TOL)
+
     elif merge_type == "LRP": # merge to left and right (periodic)
         curr = (elem-1)%num_elem
         while left_length < TOL:
