@@ -6,8 +6,7 @@ This is a Python code that solves 1D hyperbolic conservation laws on nonuniform 
 </p>
 <p align="center"> <i>High order approximation (p = 5) of an advecting pulse on a highly nonunform grid.  The DG solution on each element is plotted with a different colour.</i> <p align="center">
 
-
-### Grid generation and preprocessing
+## 🏗&nbsp; Grid generation and preprocessing
 Nonuniform grids on which state redistribution can be applied are generated using `gengrid.py`.  For example, the call
 
 ```
@@ -42,7 +41,5 @@ All of the above options use a specified tolerance (TOL) in the code.
 
 After the grid generator finishes, it output three files.  The file with extension `.dat`, contains the grid endpoints.  The file with extension `.pdat` contains the preprocessing information that specifies the merging neighborhoods.
 
-### Running the code
-
-
+## 🏃🏻‍♂️&nbsp; Running the code
 [1] Colella, Phillip, et al. "A Cartesian grid embedded boundary method for hyperbolic conservation laws." Journal of Computational Physics 211.1 (2006): 347-366.
