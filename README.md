@@ -42,4 +42,9 @@ All of the above options use a specified tolerance (TOL) in the code.
 After the grid generator finishes, it output three files.  The file with extension `.dat`, contains the grid endpoints.  The file with extension `.pdat` contains the preprocessing information that specifies the merging neighborhoods.
 
 ## 🏃🏻‍♀️&nbsp; Running the code 
+
+## 📓&nbsp; License
+
+
 [1] Colella, Phillip, et al. "A Cartesian grid embedded boundary method for hyperbolic conservation laws." Journal of Computational Physics 211.1 (2006): 347-366.
+
