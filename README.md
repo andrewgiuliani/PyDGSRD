@@ -5,6 +5,18 @@ This is a Python code that solves 1D hyperbolic conservation laws on nonuniform 
   <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/srd.png" alt="SRD" width="300" >
 </p>
 <p align="center"> <i>High order approximation (p = 5) of an advecting pulse on a highly nonunform grid.  The DG solution on each element is plotted with a different colour.</i> <p align="center">
+  
+## Goal
+The goal of this work is to use explicit Runge Kutta time steppers on highly nonuniform grids using the time step restriction 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Delta&space;t&space;\leq&space;\frac{h}{a}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Delta&space;t&space;\leq&space;\frac{h}{a}," title="\Delta t \leq \frac{h}{a}" /></a>
+
+where <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a> is the cell size, and <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> is the maximum wavespeed in the numerical solution.   In the following grid, the majority of cells on the grid have size <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a> and only three have size <a href="https://www.codecogs.com/eqnedit.php?latex=\alpha&space;h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha&space;h" title="\alpha h" /></a>
+<p align="center">
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/example.png" alt="example"  width="700">
+</p>
+
+
 
 ## 🏗&nbsp; Grid generation and preprocessing 
 Nonuniform grids on which state redistribution can be applied are generated using `gengrid.py`.  For example, the call
