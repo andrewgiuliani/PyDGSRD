@@ -2,7 +2,7 @@
 This is a Python code that solves 1D hyperbolic conservation laws on nonuniform grids using the state redistribution method.  State redistribution is an algorithm that solves the small cell problem on cut cell grids.  That is, arbitrarily small cells on embedded boundary grids result in overly restrictive maximum stable time steps when using explicit time stepping algorithms. Similar in spirit to flux redistribution by Collela [1], state redistribution relaxes this time step restriction using a simple postprocessing operation.  Of course, this algorithm is most interesting in two and three dimensions, but this one-dimensional code illustrates the important aspects of the algorithm.
 
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/srd.png" alt="SRD" width="300" >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/srd.png" alt="SRD" width="300" >
 </p>
 <p align="center"> <i>High order approximation (p = 5) of an advecting pulse on a highly nonunform grid.  The DG solution on each element is plotted with a different colour.</i> <p align="center">
 
@@ -37,28 +37,28 @@ right endpoint
 
 * `LRNP`: merge to the left, right, non-periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRPNP.png" alt="mergetype"  width="700">
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/LRPNP.png" alt="mergetype"  width="700">
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h, only if it can.</i> <p align="center">
 
 
 * `LRP`:  merge to the left, right, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype"  width="700" >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/LRP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h.</i> <p align="center">
 
 
 * `LP`: merge only to the left, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LP.png" alt="mergetype"  width="700" >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/LP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LP option merges a small cell until the neighborhood has size TOL only to the left of the small cell, with size alpha h.</i> <p align="center">
 
 
 * `RP`: merge only to the right, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/RP.png" alt="mergetype"  width="700" >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/RP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL only to the right of the small cell, with size alpha h.</i> <p align="center">
 

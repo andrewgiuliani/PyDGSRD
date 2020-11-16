@@ -121,7 +121,7 @@ for elem in range(num_elem):
     m[elem] = elem
     M[elem] = elem
 
-    if h[elem] > TOL:
+    if h[elem] > dx:
         continue
 
 #    ipdb.set_trace(context=21)
