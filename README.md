@@ -32,6 +32,7 @@ right endpoint
 * `paper`: this is the grid used to demonstrate one-dimensional SRD in our paper.
 * `bdry1`: one small cell on the left boundary, otherwise uniform.
 * `brdy2`: one small cell on the left and right boundary, otherwise uniform.
+* `brdy3`: one small cell on the left, and two small cells at the center, otherwise uniform.
 
 -MERGETYPE
 
@@ -99,9 +100,16 @@ python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE paper -MERGETYPE LRNP
 python PyDGSRD.py -P 5 -T 1.0 -G grid_100
 ```
 
-2. Generates a one-dimensional grid, where the cell sizes follow a power law distribution.  This means that the grid is composed of vastly different cell sizes.
+2. Generates a grid where the cell sizes follow a power law distribution.  This means that the grid is composed of vastly different cell sizes.
 ```
 python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE power -MERGETYPE LRP
+python PyDGSRD.py -P 5 -T 1.0 -G grid_100
+```
+
+
+3. Generates the grid in the figures of this readme.
+```
+python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE bdry3 -MERGETYPE LRP
 python PyDGSRD.py -P 5 -T 1.0 -G grid_100
 ```
 
