@@ -107,7 +107,7 @@ python PyDGSRD.py -P 5 -T 1.0 -G grid_100
 ```
 
 
-3. Generates the grid in the figures of this readme.
+3. Generates the grid in the figures of this readme.  The small cell volume fraction, `alpha`, is set to 1e-5 in the code, but this can be modified.
 ```
 python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE bdry3 -MERGETYPE LRP
 python PyDGSRD.py -P 5 -T 1.0 -G grid_100
