@@ -37,28 +37,28 @@ right endpoint
 
 * `LRNP`: merge to the left, right, non-periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRPNP.png" alt="mergetype"  >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRPNP.png" alt="mergetype"  width="700">
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h, only if it can.</i> <p align="center">
 
 
 * `LRP`:  merge to the left, right, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype"  >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h.</i> <p align="center">
 
 
 * `LP`: merge only to the left, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LP.png" alt="mergetype"  >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LP option merges a small cell until the neighborhood has size TOL only to the left of the small cell, with size alpha h.</i> <p align="center">
 
 
 * `RP`: merge only to the right, periodically.
 <p align="center">
-  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/RP.png" alt="mergetype"  >
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/RP.png" alt="mergetype"  width="700" >
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL only to the right of the small cell, with size alpha h.</i> <p align="center">
 
