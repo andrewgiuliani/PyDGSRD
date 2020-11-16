@@ -114,6 +114,7 @@ For help running the code, or any other questions, send me an email at
 
 
 
+## References
 
 [1] Colella, Phillip, et al. "A Cartesian grid embedded boundary method for hyperbolic conservation laws." Journal of Computational Physics 211.1 (2006): 347-366.
 
