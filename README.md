@@ -19,7 +19,7 @@ where <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><im
 </p>
 
 State redistribution will allow the use of a time step that is proportional <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a> _not_ <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\alpha&space;h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\alpha&space;h" title="\alpha h" /></a>.  The main idea of state redistribution is to temporarily merge, or coarsen, the numerical solution into neighborhoods located on the small cells.
-Then, the solution on these neighborhoods is refined back onto the base, nonuniform, grid.
+Then, the solution on these neighborhoods is refined back onto the base, nonuniform, grid.  In the next section, we describe the different ways of determining these merging neighborhoods in one dimension (the preprocessing stage).
 
 ## 🏗&nbsp; Grid generation and preprocessing 
 Nonuniform grids on which state redistribution can be applied are generated using `gengrid.py`.  For example, the call
