@@ -36,15 +36,24 @@ right endpoint
 -MERGETYPE
 
 * `LRNP`: merge to the left, right, non-periodically.
-* `LRP`:  merge to the left, right, periodically.
-* `LP`: merge only to the left, periodically.
-* `RP`: merge only to the right, periodically.
+<p align="center">
+  <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRPNP.png" alt="mergetype"  >
+</p>
+<p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h.</i> <p align="center">
 
-All of the above options create neighbourhoods using a specified tolerance (TOL) in the code, whereby cells are merged to the left or to the right until the neighborhood satisfies a size constraint:
+
+* `LRP`:  merge to the left, right, periodically.
 <p align="center">
   <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/LRP.png" alt="mergetype"  >
 </p>
 <p align="center"> <i>The LRP option merges a small cell until the neighborhood has size TOL on the left and the right of the small cell, with size alpha h.</i> <p align="center">
+
+
+* `LP`: merge only to the left, periodically.
+* `RP`: merge only to the right, periodically.
+
+All of the above options create neighbourhoods using a specified tolerance (TOL) in the code, whereby cells are merged to the left or to the right until the neighborhood satisfies a size constraint:
+
 
 
 After the grid generator finishes, it output three files.  
