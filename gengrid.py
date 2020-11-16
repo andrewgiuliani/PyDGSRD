@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-N", "--NUMELEM", type=int, help="number of elements", default = 0)
 parser.add_argument("-L", "--LEFT", type=float, help="left endpoint", default = 0)
 parser.add_argument("-R", "--RIGHT", type=float, help="right endpoint", default = 0)
-parser.add_argument("-MESHTYPE", "--MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2"], default="load", help="mesh type")
+parser.add_argument("-MESHTYPE", "--MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2", "bdry3"], default="load", help="mesh type")
 parser.add_argument("-MERGETYPE", "--MERGETYPE", type=str, choices = ["LRP", "LRNP", "LP", "RP"], help="LRP = merge to left and right. LRNP = left, right, nonperiodic LP = left periodic. RP = right periodic")
 parser.add_argument("-LOAD", "--LOAD", type = str, help="load a grid", default = "null")
 args = parser.parse_args()
@@ -63,6 +63,16 @@ elif mesh_type == "bdry2":
     dx = (right - left) / (num_elem-2 + 2*alpha)
     reg = np.arange(num_elem-1) * dx + alpha*dx
     x = np.hstack( (np.array([left]), reg+left, np.array([right]) ) ) 
+#    ipdb.set_trace(context=21)
+elif mesh_type == "bdry3":
+    N = num_elem
+    num_elem = 2*N + 1 + 3
+    alpha = 1e-5 # volume fraction
+    dx = (right-left) / (2*N + 1 + alpha * 3)
+    reg1 = np.arange(N) * dx + left + dx * alpha
+    irreg = np.array( [0, dx, dx*(1+alpha), dx*(2+alpha), dx*(2 + 2*alpha)] ) + reg1[-1]+dx
+    reg2 = np.arange(N-1) * dx + irreg[-1] + dx 
+    x = np.hstack( ( np.array([left]), reg1 , irreg, reg2) )
 #    ipdb.set_trace(context=21)
 elif mesh_type == "load":
     
@@ -121,7 +131,7 @@ for elem in range(num_elem):
     m[elem] = elem
     M[elem] = elem
 
-    if h[elem] > dx:
+    if h[elem] + 1e-10 >= dx:
         continue
 
 #    ipdb.set_trace(context=21)
