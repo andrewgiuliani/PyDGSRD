@@ -32,6 +32,7 @@ right endpoint
 * `paper`: this is the grid used to demonstrate one-dimensional SRD in our paper.
 * `bdry1`: one small cell on the left boundary, otherwise uniform.
 * `brdy2`: one small cell on the left and right boundary, otherwise uniform.
+* `brdy3`: one small cell on the left, and two small cells at the center, otherwise uniform.
 
 -MERGETYPE
 
@@ -91,8 +92,29 @@ grid filename (without any file extensions!)
 -PLOT
 plot the numerical solution at the final time using matplotlib
 
+## 🧪 &nbsp; Examples
+
+1. Reproduces the one-dimensional convergence test in [2], here, I've chosen a sixth order accurate numerical solution, but this can be changed.  Merging neighbourhoods are created by merging to the left and right of each small cell.
+```
+python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE paper -MERGETYPE LRNP 
+python PyDGSRD.py -P 5 -T 1.0 -G grid_100
+```
+
+2. Generates a grid where the cell sizes follow a power law distribution.  This means that the grid is composed of vastly different cell sizes.
+```
+python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE power -MERGETYPE LRP
+python PyDGSRD.py -P 5 -T 1.0 -G grid_100
+```
+
+
+3. Generates the grid in the figures of this readme.
+```
+python gengrid.py -L -1.0 -R 1.0 -N 100 -MESHTYPE bdry3 -MERGETYPE LRP
+python PyDGSRD.py -P 5 -T 1.0 -G grid_100
+```
+
 ## ☎️ &nbsp; Contact
-For help running the code, or any other questions, feel free to send me an email at
+For help running the code, or any other questions, send me an email at
 `giuliani AT cims DOT nyu DOT edu`
 
 ## 📓&nbsp; License
@@ -100,6 +122,9 @@ For help running the code, or any other questions, feel free to send me an email
 
 
 
+## References
 
 [1] Colella, Phillip, et al. "A Cartesian grid embedded boundary method for hyperbolic conservation laws." Journal of Computational Physics 211.1 (2006): 347-366.
+
+[2] Giuliani, Andrew and Berger, Marsha. "A state redistribution method for discontinuous Galerkin methods on curvilinear embedded boundary grids".
 
