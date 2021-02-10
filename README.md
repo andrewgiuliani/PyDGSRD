@@ -138,6 +138,6 @@ For help running the code, or any other questions, send me an email at
 
 [1] Colella, Phillip, et al. "A Cartesian grid embedded boundary method for hyperbolic conservation laws." Journal of Computational Physics 211.1 (2006): 347-366.
 
-[2] Giuliani, Andrew. "A two-dimensional stabilized discontinuous Galerkin method on curvilinear embedded boundary grids".
+[2] Giuliani, Andrew. "A two-dimensional stabilized discontinuous Galerkin method on curvilinear embedded boundary grids". [https://arxiv.org/abs/2005.05734](https://arxiv.org/abs/2005.05734)
 
 
