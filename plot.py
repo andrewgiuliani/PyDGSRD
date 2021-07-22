@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from legendre import LegendreVandermonde
 from matplotlib.collections import LineCollection
-import ipdb
 
 def plot(c, grid_x, p):
 
@@ -22,7 +21,6 @@ def plot(c, grid_x, p):
     Ux[:,:,:,0] = xvals
     Ux[:,:,:,1] = np.matmul(c, np.transpose(basis_vol)) 
 
-    #ipdb.set_trace(context=21)
 
 
     fig, ax = plt.subplots(1, c.shape[0])

@@ -9,7 +9,6 @@ from advection import exact_solution, flux, numerical_flux, wavespeed
 from plot import plot
 from srd import srd_basis_functions, srd
 
-import ipdb
 
 import argparse
 
@@ -31,7 +30,6 @@ plotfinal = args.PLOT
 grid_name =           grid + ".dat"
 preprocessing_name =  grid + ".pdat"
 merging_meta_data  =  grid + ".mdat"
-#ipdb.set_trace(context=21)
 
 grid_x = np.loadtxt(grid_name) # load the element grid coordinates
 
@@ -52,7 +50,6 @@ N = h.size          # number of elements in the grid
 ## load merge data ##
 with open(merging_meta_data, 'r') as file:
     indata = file.read().replace('\n', ' ').split()
-#ipdb.set_trace(context=21)
 dx = float(indata[0])
 merge_type = str(indata[1])
 TOL = float(indata[2])
@@ -73,11 +70,8 @@ def mass(c, h):
 def compute_initial_condition(x): # return the modal coefficients on each element
     fvals = exact_solution(x, 0.)
     c = 0.5*np.matmul(fvals * w_gl[None,None,:], basis_vol)
-    #ipdb.set_trace(context=21)
-    #c = np.matmul(fvals * w_gl, basis_vol)
     return c
 def compute_error(c,t):
-#    ipdb.set_trace(context=21)
     gauss_legendre_quad_fine = np.polynomial.legendre.leggauss(p+2)
     x_gl_fine, w_gl_fine = gauss_legendre_quad_fine[0], gauss_legendre_quad_fine[1]
     basis_vol_fine,_ = LegendreVandermonde(x_gl_fine, p)

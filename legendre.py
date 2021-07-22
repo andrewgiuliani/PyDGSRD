@@ -1,18 +1,14 @@
 import numpy as np
-import ipdb
 def LegendreVandermonde(x, p):
     V = np.zeros( (x.size, p+1) )
     dV = np.zeros( (x.size, p+1) )
    
-#    ipdb.set_trace(context=21)
     odd = 2*np.arange(11) + 1
     normalization = np.sqrt(odd)/odd
 
-    #normalization = np.array([np.sqrt(2.), (1./3.)*np.sqrt(6.), (1./5.)*np.sqrt(10.), (1./7.)*np.sqrt(14.), (1./3.)*np.sqrt(2.), (1./11.)*np.sqrt(22.), (1./13.)*np.sqrt(26.), (1./15.)*np.sqrt(30.), (1./17.)*np.sqrt(34.), (1./19.)*np.sqrt(38.), (1./21.)*np.sqrt(42.)])
     for i in range(p+1):
         V[:,i] = Legendre(x,i)/normalization[i]
         dV[:,i] = 2*dLegendre(x,i)/normalization[i]
-        #dV[:,i] = dLegendre(x,i)/normalization[i]
     return V,dV
 
 

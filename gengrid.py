@@ -1,5 +1,4 @@
 import numpy as np
-import ipdb
 import sys
 import argparse
 
@@ -63,7 +62,6 @@ elif mesh_type == "bdry2":
     dx = (right - left) / (num_elem-2 + 2*alpha)
     reg = np.arange(num_elem-1) * dx + alpha*dx
     x = np.hstack( (np.array([left]), reg+left, np.array([right]) ) ) 
-#    ipdb.set_trace(context=21)
 elif mesh_type == "bdry3":
     N = num_elem
     num_elem = 2*N + 1 + 3
@@ -73,13 +71,11 @@ elif mesh_type == "bdry3":
     irreg = np.array( [0, dx, dx*(1+alpha), dx*(2+alpha), dx*(2 + 2*alpha)] ) + reg1[-1]+dx
     reg2 = np.arange(N-1) * dx + irreg[-1] + dx 
     x = np.hstack( ( np.array([left]), reg1 , irreg, reg2) )
-#    ipdb.set_trace(context=21)
 elif mesh_type == "load":
     
     x = np.loadtxt(loadgridname + ".dat")
     with open(loadgridname + ".mdat", 'r') as file:
         indata = file.read().replace('\n', ' ').split()
-    #ipdb.set_trace(context=21)
     dx = float(indata[0])
     merge_type = str(indata[1])
     #TOL = float(indata[2])
