@@ -23,7 +23,7 @@ def srd_basis_functions(grid_x, h, m, M, overlaps, p):
             mx_gl_left = xval[midxs_left, :].flatten()-grid_x[m[idx]]
             mx_gl_right = xval[midxs_right,:].flatten() -grid_x[0] + grid_x[-1]-grid_x[m[idx]]
             midxs = np.hstack( (midxs_left, midxs_right) )
-            mx_gl = 2.* np.hstack( (mx_gl_left, mx_gl_right) ) / np.sum( h[midxs] ) - 0.5)
+            mx_gl = 2.* (np.hstack( (mx_gl_left, mx_gl_right) ) / np.sum( h[midxs] ) - 0.5)
             
         else:
             midxs = np.arange(m[idx], M[idx]+1)
