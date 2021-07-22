@@ -17,18 +17,17 @@ def srd_basis_functions(grid_x, h, m, M, overlaps, p):
     for idx in range(h.size):
         
         if m[idx] > M[idx]:
-            #ipdb.set_trace(context=21)
             midxs_left = np.arange(m[idx], h.size)
             midxs_right = np.arange(0, M[idx]+1)
             
             mx_gl_left = xval[midxs_left, :].flatten()-grid_x[m[idx]]
-            mx_gl_right = xval[midxs_right,:].flatten() -grid_x[0] + grid_x[-1]-xval[m[idx], 0] 
+            mx_gl_right = xval[midxs_right,:].flatten() -grid_x[0] + grid_x[-1]-grid_x[m[idx]]
             midxs = np.hstack( (midxs_left, midxs_right) )
-            mx_gl = np.hstack( (mx_gl_left, mx_gl_right) ) / np.sum( h[midxs] )
+            mx_gl = 2.*(np.hstack( (mx_gl_left, mx_gl_right) ) / np.sum( h[midxs] ) - 0.5)
             
         else:
             midxs = np.arange(m[idx], M[idx]+1)
-            mx_gl = (xval[midxs, :].flatten()-xval[m[idx], 0])/(np.sum(h[midxs]))
+            mx_gl = 2*(xval[midxs, :].flatten()-grid_x[m[idx]])/(np.sum(h[midxs])) - 1.
         
         mw_gl = np.outer(h[midxs]/overlaps[midxs], w_gl)
         vmerge = np.sum(np.sum(mw_gl,0))
@@ -43,7 +42,6 @@ def srd_basis_functions(grid_x, h, m, M, overlaps, p):
         mbasis_vol.append( mbv )
         mw_gl_list.append( mw_gl )
        
-
     return mbasis_vol, mw_gl_list
         
 def srd(c_in, bv, mbv, m, M, overlaps, w_gl, mw_gl):
