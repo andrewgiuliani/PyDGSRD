@@ -40,4 +40,4 @@ jobs:
         run: |
           cd tests
           ls -l
-          pytest test_srd.py
+          pytest .
