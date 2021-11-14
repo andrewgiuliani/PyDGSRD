@@ -30,6 +30,12 @@ jobs:
         run: |
           echo test, and deploy your project.
           pip install .
+
+      - name: ls -l again
+        run: |
+          ls -l
+          pwd
+
       - name: run test
         run: |
           cd tests
