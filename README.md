@@ -5,6 +5,9 @@ This is a Python code that solves 1D hyperbolic conservation laws on nonuniform 
   <img src="https://github.com/andrewgiuliani/PyDGSRD/blob/main/images/srd.png" alt="SRD" width="300" >
 </p>
 <p align="center"> <i>High order approximation (p = 5) of an advecting pulse on a highly nonunform grid.  The DG solution on each element is plotted with a different colour.</i> <p align="center">
+
+## Installation
+This simple code can be installed quickly by navigating to the `pydgsrd1d` directory and running `pip install -e .`
   
 ## Goal
 The goal of this work is to use explicit Runge Kutta time steppers on highly nonuniform grids using the time step restriction 
