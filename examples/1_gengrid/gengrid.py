@@ -1,19 +1,25 @@
+#!/usr/bin/env python3
 import numpy as np
 import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-N", "--NUMELEM", type=int, help="number of elements", default = 0)
-parser.add_argument("-L", "--LEFT", type=float, help="left endpoint", default = 0)
-parser.add_argument("-R", "--RIGHT", type=float, help="right endpoint", default = 1)
-parser.add_argument("-MESHTYPE", "--MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2", "bdry3"], default="load", help="mesh type")
-parser.add_argument("-MERGETYPE", "--MERGETYPE", type=str, choices = ["LRP", "LRNP", "LP", "RP"], help="LRP = merge to left and right. LRNP = left, right, nonperiodic LP = left periodic. RP = right periodic")
-parser.add_argument("-LOAD", "--LOAD", type = str, help="load a grid", default = "null")
+parser.add_argument("-N", type=int, help="number of elements", required=True)
+parser.add_argument("-L", type=float, help="left endpoint", required=True)
+parser.add_argument("-R", type=float, help="right endpoint", required=True)
+parser.add_argument("-MESHTYPE", type=str, choices = ["uniform", "rand","perturb", "power", "paper", "bdry1", "bdry2", "bdry3"], required=True, help="mesh type")
+parser.add_argument("-MERGETYPE", type=str, choices = ["LRP", "LRNP", "LP", "RP"], help="LRP = merge to left and right. LRNP = left, right, nonperiodic LP = left periodic. RP = right periodic", required=True)
+parser.add_argument("-LOAD", type = str, help="load a grid", default = "null")
+
+if len(sys.argv) < 2:
+    parser.print_help()
+    sys.exit(1)
+
 args = parser.parse_args()
 
-num_elem = args.NUMELEM 
-left = args.LEFT
-right = args.RIGHT
+num_elem = args.N
+left = args.L
+right = args.R
 mesh_type = args.MESHTYPE
 merge_type = args.MERGETYPE
 loadgridname = args.LOAD
