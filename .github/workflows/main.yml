@@ -32,4 +32,5 @@ jobs:
           pip install .
       - name: run test
         run: |
-          pytest ./tests/test_srd.py
+          cd tests
+          pytest test_srd.py
