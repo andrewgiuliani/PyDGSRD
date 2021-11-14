@@ -29,7 +29,6 @@ jobs:
       - name: install
         run: |
           echo test, and deploy your project.
-          cd pydgsrd1d
           pip install .
       - name: run test
         run: |
