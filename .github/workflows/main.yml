@@ -39,4 +39,5 @@ jobs:
       - name: run test
         run: |
           cd tests
+          ls -l
           pytest test_srd.py
