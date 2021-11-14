@@ -32,4 +32,4 @@ jobs:
           pip install .
       - name: run test
         run: |
-          pytest test/test_srd.py
+          pytest tests/test_srd.py
