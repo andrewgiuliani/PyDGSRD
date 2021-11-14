@@ -5,7 +5,11 @@ import pydgsrd1d as pdg
 
 
 @pytest.mark.parametrize("p", [1, 2, 3, 4, 5])
+
 def test_srd(p):
+    ## This test makes sure that the stabilized DG scheme on a randomly generated nonuniform grid still converges with
+    ## the convergence rate of p+1.
+
     T = 1
     plotfinal = False
     
