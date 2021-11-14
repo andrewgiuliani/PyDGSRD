@@ -1,4 +1,4 @@
-## 🏗&nbsp; Grid generation and preprocessing 
+## 🏗&nbsp; 1_gengrid: Grid generation and preprocessing 
 Nonuniform grids on which state redistribution can be applied are generated using `gengrid.py`.  For example, the call
 
 ```

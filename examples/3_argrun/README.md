@@ -1,4 +1,4 @@
-## 🧪 &nbsp; Examples
+## 🧪 &nbsp; 3_argrun: launch the DG code with arguments from command line
 This is a python code to solve a simple linear advection problem with periodic BCs with command line arguments.
 
 1. Generates the grid in the figures of this readme.  The small cell volume fraction, `alpha`, is set to 1e-5 in the code, but this can be modified.
