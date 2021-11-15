@@ -64,28 +64,6 @@ After the grid generator finishes, it output three files.
 - The file with extension `.pdat` contains the preprocessing information that specifies the merging neighborhoods.  The file contains three columns corresponding to `m`, `M`, and `overlaps` in the code.  `m` and `M` specify the indices of the first and last cell in the merging neighbourhoods.  For example the merging neighborhood associated to cell 5 is made up of cells with indices `m[5], m[5]+1, ..., M[5]`.  `overlaps` contains the number of neighborhoods that overlap each cell in the grid.
 - The file with extension `.mdat` contains metadata about the preprocessing stage: cell size to be used in the CFL condition, which merging algorithm was chosen, the merging tolerance, and type of random grid that was generated.
 
-## Running the code 
-`PyDGSRD` can be called after grid generation with, for example,
-```
-python PyDGSRD.py -P 5 -T 1 -G grid_100
-```
-which computes a sixth order (`p = 5`) approximation to the solution at the final time (`T = 1`) on `grid_100`.
-The different arguments that `PyDGSRD.py` accepts are explained below:
-
--P
-polynomial degree of approximation
-
--T
-final time
-
--G
-grid filename (without any file extensions!)
-
--PLOT
-plot the numerical solution at the final time using matplotlib
-
-
-
 
 ## 🧪 &nbsp; Examples
 
