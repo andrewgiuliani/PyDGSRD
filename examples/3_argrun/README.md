@@ -9,7 +9,7 @@ After the above is executed, `driver.py` can be called with command line argumen
 ```
 ./driver.py -P 5 -T 1 -G grid_204
 ```
-which computes a sixth order (`p = 5`) approximation to the solution at the final time (`T = 1`) on `grid_100`.
+which computes a sixth order (`p = 5`) approximation to the solution at the final time (`T = 1`) on `grid_204`.
 The different arguments that `driver.py` accepts are explained below:
 
 `-P`
