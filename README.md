@@ -46,3 +46,20 @@ For help running the code, or any other questions, send me an email at
 [2] Giuliani, Andrew. "A two-dimensional stabilized discontinuous Galerkin method on curvilinear embedded boundary grids". [https://arxiv.org/abs/2102.01857](https://arxiv.org/abs/2102.01857)
 
 
+<!-- Default Statcounter code for PyDGSRD1D
+https://github.com/andrewgiuliani/PyDGSRD1D -->
+<script type="text/javascript">
+var sc_project=12684925; 
+var sc_invisible=1; 
+var sc_security="403e28cb"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12684925/0/403e28cb/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
